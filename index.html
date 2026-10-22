@@ -3,132 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARASAKA DATABASE // NETRUNNER DOSSIER</title>
+    <title>ARASAKA DATABASE // HQNERO</title>
     <style>
-        :root {
-            --arasaka-red: #ff003c;
-            --arasaka-dark-red: #8b0000;
-            --cyber-yellow: #fcee0a;
-            --cyber-bg: #08090a;
-            --cyber-card: #121417;
-            --cyber-text: #e2e8f0;
-            --cyber-dim: #64748b;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background-color: var(--cyber-bg);
-            color: var(--cyber-text);
+            background-color: #08090a;
+            color: #e2e8f0;
             font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-            background-image: 
-                radial-gradient(rgba(255, 0, 60, 0.15) 1px, transparent 0),
-                linear-gradient(to bottom, rgba(8, 9, 10, 0.95), rgba(8, 9, 10, 0.98));
-            background-size: 24px 24px, 100% 100%;
+            background-image: radial-gradient(rgba(255, 0, 60, 0.2) 1px, transparent 0);
+            background-size: 20px 20px;
         }
-
-        /* Сканирующий луч на фоне */
-        body::before {
-            content: " ";
-            display: block;
-            position: fixed;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
-            background-size: 100% 4px;
-            z-index: 10;
-            pointer-events: none;
-            opacity: 0.6;
-        }
-
-        .dossier-card {
-            background: var(--cyber-card);
-            border: 2px solid var(--arasaka-red);
+        .card {
+            background: #121417;
+            border: 2px solid #ff003c;
             width: 100%;
-            max-width: 680px;
-            padding: 30px;
-            position: relative;
-            box-shadow: 0 0 25px rgba(255, 0, 60, 0.25);
-            overflow: hidden;
+            max-width: 650px;
+            padding: 25px;
+            box-shadow: 0 0 20px rgba(255, 0, 60, 0.3);
         }
-
-        /* Декоративные углы */
-        .dossier-card::before {
-            content: "ARASAKA CORP // SECURITY DIVISION";
-            position: absolute;
-            top: 8px;
-            right: 12px;
-            font-size: 10px;
-            color: var(--arasaka-red);
-            letter-spacing: 2px;
-            font-weight: bold;
-        }
-
         .header {
-            border-bottom: 2px solid var(--arasaka-red);
-            padding-bottom: 15px;
-            margin-bottom: 25px;
+            border-bottom: 2px solid #ff003c;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
-
-        .logo {
-            color: var(--arasaka-red);
-            font-size: 28px;
-            font-weight: 900;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(255, 0, 60, 0.5);
-        }
-
-        .sub-header {
-            color: var(--cyber-yellow);
-            font-size: 12px;
-            letter-spacing: 3px;
-            margin-top: 5px;
-        }
-
-        .status-badge {
+        .logo { color: #ff003c; font-size: 26px; font-weight: bold; letter-spacing: 4px; }
+        .sub { color: #fcee0a; font-size: 11px; margin-top: 4px; letter-spacing: 2px; }
+        .badge {
             display: inline-block;
-            background: var(--arasaka-red);
+            background: #ff003c;
             color: #fff;
+            font-size: 10px;
+            padding: 2px 6px;
+            margin-top: 8px;
             font-weight: bold;
-            font-size: 11px;
-            padding: 3px 8px;
-            margin-top: 10px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
         }
-
-        .section-title {
-            color: var(--cyber-yellow);
-            font-size: 14px;
-            letter-spacing: 2px;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            border-left: 3px solid var(--cyber-yellow);
-            padding-left: 8px;
+        .title {
+            color: #fcee0a;
+            font-size: 13px;
+            margin: 15px 0 8px 0;
+            border-left: 3px solid #fcee0a;
+            padding-left: 6px;
         }
-
-        .bio-info {
-            line-height: 1.6;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .bio-info span {
-            color: var(--cyber-dim);
-        }
-
-        /* Таблица навыков */
-        .skills-grid {
+        .info { line-height: 1.6; font-size: 13px; }
+        .dim { color: #64748b; }
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap:
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        .skill {
+            background: #1a1d24;
+            border: 1px solid #30363d;
+            padding: 8px 10px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+        }
+        .mid { color: #fcee0a; font-weight: bold; }
+        .jun { color: #94a3b8; font-weight: bold; }
+        .warn {
+            margin-top: 20px;
+            background: rgba(255, 0, 60, 0.1);
+            border: 1px dashed #ff003c;
+            padding: 10px;
+            font-size: 11px;
+            color: #f87171;
+        }
+        .footer { margin-top: 20px; text-align: right; font-size: 9px; color: #64748b; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <div class="logo">荒坂 ARASAKA</div>
+            <div class="sub">// PERSONNEL DATABASE // CLASSIFIED</div>
+            <div class="badge">TARGET: HQNERO // ACTIVE NETRUNNER</div>
+        </div>
+
+        <div class="title">01. ОСНОВНЫЕ ДАННЫЕ</div>
+        <div class="info">
+            <div><span class="dim">[ ВОЗРАСТ ]:</span> 13 лет</div>
+            <div><span class="dim">[ IT СТАЖ ]:</span> С 8 лет (компьютерные технологии)</div>
+            <div><span class="dim">[ DEV СТАЖ ]:</span> С 11 лет (программирование)</div>
+            <div><span class="dim">[ ПРОФИЛЬ ]:</span> White-Hat Hacking / Social Engineering</div>
+        </div>
+
+        <div class="title">02. ТЕХНИЧЕСКИЙ СТЕК</div>
+        <div class="grid">
+            <div class="skill"><span>Python</span><span class="mid">Middle</span></div>
+            <div class="skill"><span>Batch-file</span><span class="mid">Middle</span></div>
+            <div class="skill"><span>C++</span><span class="jun">Junior</span></div>
+            <div class="skill"><span>Java</span><span class="jun">Junior</span></div>
+        </div>
+
+        <div class="title">03. СЕКРЕТНОСТЬ</div>
+        <div class="warn">
+            [!] OPSEC NOTICE: Ссылки на публичные репозитории и проекты заблокированы/засекречены пользователем.
+        </div>
+
+        <div class="footer">CONFIDENTIAL // PROPERTY OF ARASAKA CORP</div>
+    </div>
+</body>
+</html>
